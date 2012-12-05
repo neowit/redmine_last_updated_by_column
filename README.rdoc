@@ -4,14 +4,15 @@ Current version of Redmine has Issue."Updated" column which displays time of las
 update.
 LastUpdatedBy plugin adds "Updated By" column which shows user name in 
 "<First Name> <Last Name>" and can be displayed on:
-- Issues list
-- My page
+- Issues list (as extra column)
+- My page (as a separate component)
 
 "Updated By" column is not a real Database column, its value is generated on
 the fly when Redmine renders Issues list. The column is sortable but not
 groupable of filterable.
 
-Note on /issues page when for Issues without updates "Updated By" is blank.
+Note: on /issues page when for Issues without updates "Updated By" is blank by
+design.
 
 = Redmine version
 
@@ -20,7 +21,7 @@ Requires Redmine version 2.X. and Rails >= 3
 = Installation
 
 Copy last_updated_by_column folder into #{RAILS_ROOT}/plugins and restart the
-web server.  Plugin does not change any data so no DB migration is required.
+web server.  Plugin does not change any data and no DB migration is required.
 More details about Redmine plugin installation here: http://www.redmine.org/projects/redmine/wiki/Plugins
 
 = Configuration
@@ -32,7 +33,7 @@ To display extra column on "My Page" add block 'Issues assigned to me with "Upda
 via "My Page" ->  "Personalise this page".
 
 When using "My Page" component you can personalise highlight style.
-See last_updated_by_column/assets/stylesheets/last_updated_by_column.css
+See `last_updated_by_column/assets/stylesheets/last_updated_by_column.css`
 
 = Legal stuff
 
