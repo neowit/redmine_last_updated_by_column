@@ -1,27 +1,36 @@
-= Last Updated By
+= Redmine "Last Updated By" (Last Modified By) plugin
 
-A Redmine plugin to display name of the user who made last Issue update.
-Provides virtual column which can be displayed in Issues list.
-Redmine already provides "Updated" column which displays time of last Issue
-update so "Last Updated By" column only shows user name in 
-"<First Name> <Last Name>" format.
+Current version of Redmine has Issue."Updated" column which displays time of last Issue
+update.
+LastUpdatedBy plugin adds "Updated By" column which shows user name in 
+"<First Name> <Last Name>" and can be displayed on:
+- Issues list
+- My page
 
-LastUpdatedBy column is not a real Database column, its value is generated on
+"Updated By" column is not a real Database column, its value is generated on
 the fly when Redmine renders Issues list. The column is sortable but not
 groupable of filterable.
 
 = Redmine version
 
-Requires Redmine version 2.X.
-Will not work with Rails < 3
+Requires Redmine version 2.X. and Rails >= 3
 
 = Installation
 
-Copy last_updated_by_column folder into #{RAILS_ROOT}/plugins and restart the web server.
-Plugin does not change any data so no DB migration is required.
+Copy last_updated_by_column folder into #{RAILS_ROOT}/plugins and restart the
+web server.  Plugin does not change any data so no DB migration is required.
+More details about Redmine plugin installation here: http://www.redmine.org/projects/redmine/wiki/Plugins
 
-Then go to issues list of any project and add "Last updated By" column into
-"Selected Columns" list
+= Configuration
+
+To display extra column on '/issues' list add "Updated By" column into
+"Selected Columns" list.
+
+To display extra column on "My Page" add block 'Issues assigned to me with "Updated By"' 
+via "My Page" ->  "Personalise this page".
+
+When using "My Page" component you can personalise highlight style.
+See last_updated_by_column/assets/stylesheets/last_updated_by_column.css
 
 = Legal stuff
 
