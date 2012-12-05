@@ -11,6 +11,8 @@ LastUpdatedBy plugin adds "Updated By" column which shows user name in
 the fly when Redmine renders Issues list. The column is sortable but not
 groupable of filterable.
 
+Note on /issues page when for Issues without updates "Updated By" is blank.
+
 = Redmine version
 
 Requires Redmine version 2.X. and Rails >= 3
