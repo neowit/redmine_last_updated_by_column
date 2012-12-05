@@ -1,0 +1,70 @@
+<h3><%=l(:label_assigned_to_me_issues_with_lastupdatedby)%> (<%= Issue.visible.open.count(:conditions => {:assigned_to_id => ([User.current.id] + User.current.group_ids)})%>)</h3>
+<%    
+    issuesassignedtome_items = Issue.visible.open.
+      where(:assigned_to_id => ([User.current.id] + User.current.group_ids)).
+      limit(10).
+      includes(:status, :project, :tracker, :priority).
+      order("#{IssuePriority.table_name}.position DESC, #{Issue.table_name}.updated_on DESC").
+      all
+
+
+%>
+
+<% assigned_issues = issuesassignedtome_items %>
+<% if assigned_issues && assigned_issues.any? %>
+<%= form_tag({}) do %>
+  <table class="list issues">
+    <thead><tr>
+    <th>#</th>
+    <th><%=l(:field_project)%></th>
+    <th><%=l(:field_tracker)%></th>
+    <th><%=l(:label_last_updated_by)%></th>
+    <th><%=l(:field_subject)%></th>
+    </tr></thead>
+    <tbody>
+    <% for issue in assigned_issues %>
+    <tr id="issue-<%= h(issue.id) %>" class="hascontextmenu <%= cycle('odd', 'even') %> <%= issue.css_classes %>">
+      <td class="id">
+        <%= check_box_tag("ids[]", issue.id, false, :style => 'display:none;', :id => nil) %>
+        <%= link_to(h(issue.id), :controller => 'issues', :action => 'show', :id => issue) %>
+      </td>
+      <td class="project"><%= link_to_project(issue.project) %></td>
+      <td class="tracker"><%=h issue.tracker %></td>
+	  <% 
+		  updatedById = issue.last_updated_by[:id]
+		  lastUpdatedByClass = "updated_by_3rd_person"
+		  if issue.author_id == updatedById
+			  lastUpdatedByClass = "updated_by_author"
+		  elsif issue.assigned_to_id == updatedById
+			  lastUpdatedByClass = "updated_by_assignee"
+		  end
+			  
+	  %>
+	  <td class="user"><span class="<%= lastUpdatedByClass %>"><%=h issue.last_updated_by[:name] %></span></td>
+      <td class="subject">
+        <%= link_to h(truncate(issue.subject, :length => 60)), :controller => 'issues', :action => 'show', :id => issue %> (<%=h issue.status %>)
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>
+
+<% if assigned_issues.length > 0 %>
+<p class="small"><%= link_to l(:label_issue_view_all), :controller => 'issues',
+                                                       :action => 'index',
+                                                       :set_filter => 1,
+                                                       :assigned_to_id => 'me',
+                                                       :sort => 'priority:desc,updated_on:desc' %></p>
+<% end %>
+
+<% content_for :header_tags do %>
+	<%= stylesheet_link_tag 'last_updated_by_column', :plugin => 'last_updated_by_column' %>
+	<%= auto_discovery_link_tag(:atom,
+								{:controller => 'issues', :action => 'index', :set_filter => 1,
+									:assigned_to_id => 'me', :format => 'atom', :key => User.current.rss_key},
+									{:title => l(:label_assigned_to_me_issues_with_lastupdatedby)}) %>
+<% end %>

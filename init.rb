@@ -13,7 +13,7 @@ Redmine::Plugin.register :last_updated_by_column do
 	author 'Andrey Gavrikov'
 	description 'Display Name of the user who last updated Issue in the Issue lists.'
 	version '0.1'
-	url 'https://github.com/neowit/redmine_last_updated_by_column'
+	url 'https://github.com/neowit/redmine-last_updated_by_column'
 	requires_redmine '2.1.0'
 
 

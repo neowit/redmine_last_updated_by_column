@@ -2,6 +2,13 @@
 
 A Redmine plugin to display name of the user who made last Issue update.
 Provides virtual column which can be displayed in Issues list.
+Redmine already provides "Updated" column which displays time of last Issue
+update so "Last Updated By" column only shows user name in 
+"<First Name> <Last Name>" format.
+
+LastUpdatedBy column is not a real Database column, its value is generated on
+the fly when Redmine renders Issues list. The column is sortable but not
+groupable of filterable.
 
 = Redmine version
 
@@ -32,4 +39,3 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-

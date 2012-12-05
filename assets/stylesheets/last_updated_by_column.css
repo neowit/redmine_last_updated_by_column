@@ -1,0 +1,4 @@
+span.updated_by_author { color: red; }
+span.updated_by_assignee { }
+span.updated_by_3rd_person { color: brown; }
+

@@ -1,6 +1,6 @@
-en:
+en-GB:
   label_last_updated_by: Updated By
-  label_assigned_to_me_issues_with_lastupdatedby: My Issues (with "Updated By")
+  label_assigned_to_me_issues_with_lastupdatedby: My Tickets with "Updated By"
   # this will appear in the available component drop down on My Page
   # the key is .html.erb file name without leading underscore
-  issues_with_last_updated_by: Issues assigned to me with "Updated By"
+  issues_with_last_updated_by: Tickets assigned to me (with "Updated By")
