@@ -1,0 +1,35 @@
+= Last Updated By
+
+A Redmine plugin to display name of the user who made last Issue update.
+Provides virtual column which can be displayed in Issues list.
+
+= Redmine version
+
+Requires Redmine version 2.X.
+Will not work with Rails < 3
+
+= Installation
+
+Copy last_updated_by_column folder into #{RAILS_ROOT}/plugins and restart the web server.
+Plugin does not change any data so no DB migration is required.
+
+Then go to issues list of any project and add "Last updated By" column into
+"Selected Columns" list
+
+= Legal stuff
+
+Copyright (C) 2012 Andrey Gavrikov
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
