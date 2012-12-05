@@ -33,7 +33,9 @@
 	  <% 
 		  updatedById = issue.last_updated_by[:id]
 		  lastUpdatedByClass = "updated_by_3rd_person"
-		  if issue.author_id == updatedById
+		  if updatedById == User.current.id
+			  lastUpdatedByClass = "updated_by_me"
+		  elsif issue.author_id == updatedById 
 			  lastUpdatedByClass = "updated_by_author"
 		  elsif issue.assigned_to_id == updatedById
 			  lastUpdatedByClass = "updated_by_assignee"
