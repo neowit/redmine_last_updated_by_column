@@ -6,7 +6,7 @@ module LastUpdatedByQueryPatch
 			unloadable # Send unloadable so it will not be unloaded in development
 			base.add_available_column(QueryColumn.new(:last_updated_by,
 				:caption => :label_last_updated_by,
-				:sortable => "(select CONCAT_WS(' ', u.firstname, u.lastname) from `journals` as j1 inner join users as u on u.id = j1.`user_id` where `journalized_type` = 'Issue' and `journalized_id` = t0_r0 order by j1.`id` DESC limit 1)"
+				:sortable => "(select CONCAT_WS(' ', u.firstname, u.lastname) from `journals` as j1 inner join users as u on u.id = j1.`user_id` where `journalized_type` = 'Issue' and `journalized_id` = #{Issue.table_name}.id order by j1.`id` DESC limit 1)"
 			))
 		end
 
