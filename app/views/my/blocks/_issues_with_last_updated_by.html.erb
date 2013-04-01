@@ -1,6 +1,6 @@
 <h3><%=l(:label_assigned_to_me_issues_with_lastupdatedby)%> (<%= Issue.visible.open.count(:conditions => {:assigned_to_id => ([User.current.id] + User.current.group_ids)})%>)</h3>
 <%
-   all_statuses = IssueStatus.all
+   all_statuses = IssueStatus.where(:is_closed => false)
    selected_statuses = params[:my_issues_statuses] || session[:my_issues_statuses] || []
    if selected_statuses == []
      selected_statuses = all_statuses.map {|status| status.id.to_s}
