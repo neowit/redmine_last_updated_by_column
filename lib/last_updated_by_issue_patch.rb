@@ -40,6 +40,6 @@ module LastUpdatedByIssuePatch
 			@last_updated_by_name ||= self.last_updated_by(true)[:name]
 		end
 
-	end
+  end
 end
 

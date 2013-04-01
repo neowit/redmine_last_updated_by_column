@@ -1,16 +1,33 @@
 <h3><%=l(:label_assigned_to_me_issues_with_lastupdatedby)%> (<%= Issue.visible.open.count(:conditions => {:assigned_to_id => ([User.current.id] + User.current.group_ids)})%>)</h3>
-<%    
-    issuesassignedtome_items = Issue.visible.open.
-      where(:assigned_to_id => ([User.current.id] + User.current.group_ids)).
-      limit(10).
-      includes(:status, :project, :tracker, :priority).
-      order("#{IssuePriority.table_name}.position DESC, #{Issue.table_name}.updated_on DESC").
-      all
+<%
+   all_statuses = IssueStatus.all
+   selected_statuses = params[:my_issues_statuses] || session[:my_issues_statuses] || []
+   if selected_statuses == []
+     selected_statuses = all_statuses.map {|status| status.id.to_s}
+   else
+     session[:my_issues_statuses] = selected_statuses
+   end
 
+   issues_assigned_to_me = Issue.visible.open.
+           where(:assigned_to_id => ([User.current.id] + User.current.group_ids), :status_id => selected_statuses).
+           limit(10).
+           includes(:status, :project, :tracker, :priority).
+           order("#{IssuePriority.table_name}.position DESC, #{Issue.table_name}.updated_on DESC").
+           all
 
 %>
 
-<% assigned_issues = issuesassignedtome_items %>
+<% if all_statuses && all_statuses.any? %>
+    <%= form_tag('/my/page', :method => :get) do %>
+        <% for status in all_statuses %>
+            <%= check_box_tag("my_issues_statuses[]", status.id, selected_statuses.include?(status.id.to_s), :id => "my_issues_statuses#{status.id}" ) %>
+            <%= status.name%>
+            &nbsp;
+        <% end%>
+        <%= submit_tag('Refresh', :id => 'statuses_submit') %>
+    <% end %>
+<% end%>
+<% assigned_issues = issues_assigned_to_me %>
 <% if assigned_issues && assigned_issues.any? %>
 <%= form_tag({}) do %>
   <table class="list issues">
@@ -25,7 +42,6 @@
     <% for issue in assigned_issues %>
     <tr id="issue-<%= h(issue.id) %>" class="hascontextmenu <%= cycle('odd', 'even') %> <%= issue.css_classes %>">
       <td class="id">
-        <%= check_box_tag("ids[]", issue.id, false, :style => 'display:none;', :id => nil) %>
         <%= link_to(h(issue.id), :controller => 'issues', :action => 'show', :id => issue) %>
       </td>
       <td class="project"><%= link_to_project(issue.project) %></td>
