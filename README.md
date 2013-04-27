@@ -23,9 +23,9 @@ design.
 - Black - updated by assignee
 
 
-!["Tickets assigned to me"](https://github.com/neowit/redmine-last_updated_by_column/raw/master/Screenshots/My-Page-original.png)
+!["Tickets assigned to me"](https://github.com/neowit/redmine_last_updated_by_column/raw/master/Screenshots/My-Page-original.png)
 
-![My Tickets with "Updated By"](https://github.com/neowit/redmine-last_updated_by_column/raw/master/Screenshots/My-Page-custom.png)
+![My Tickets with "Updated By"](https://github.com/neowit/redmine_last_updated_by_column/raw/master/Screenshots/My-Page-custom.png)
 
 ## Redmine version
 
@@ -33,7 +33,7 @@ Requires Redmine version 2.X. and Rails >= 3
 
 ## Installation
 
-Copy last_updated_by_column folder into #{RAILS_ROOT}/plugins and restart the
+Copy redmine_last_updated_by_column folder into #{RAILS_ROOT}/plugins and restart the
 web server.  Plugin does not change any data and no DB migration is required.
 
 More details about Redmine plugin installation here: http://www.redmine.org/projects/redmine/wiki/Plugins
@@ -47,7 +47,7 @@ To display extra column on "My Page" add block `'Issues assigned to me with "Upd
 via `"My Page" ->  "Personalise this page"`.
 
 When using "My Page" component you can personalise highlight style.
-See `last_updated_by_column/assets/stylesheets/last_updated_by_column.css`
+See `redmine_last_updated_by_column/assets/stylesheets/last_updated_by_column.css`
 
 ## Legal stuff
 
