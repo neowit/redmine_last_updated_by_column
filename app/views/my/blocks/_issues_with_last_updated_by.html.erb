@@ -64,7 +64,7 @@
 <% end %>
 
 <% content_for :header_tags do %>
-	<%= stylesheet_link_tag 'last_updated_by_column', :plugin => 'last_updated_by_column' %>
+	<%= stylesheet_link_tag 'last_updated_by_column', :plugin => 'redmine_last_updated_by_column' %>
 	<%= auto_discovery_link_tag(:atom,
 								{:controller => 'issues', :action => 'index', :set_filter => 1,
 									:assigned_to_id => 'me', :format => 'atom', :key => User.current.rss_key},
