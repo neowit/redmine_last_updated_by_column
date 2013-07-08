@@ -23,7 +23,7 @@ module LastUpdatedByIssuePatch
       else #postgre and mysql
         sqlStr = "select CONCAT_WS(' ', u.firstname, u.lastname) as name"
       end
-			_sql = sqlStr + ", u.id as id from #{Journal.table_name} as j1 inner join #{User.table_name} as u on u.id = j1.`user_id` where `journalized_type` = 'Issue' and `journalized_id` = #{id} order by j1.`id` DESC limit 1"
+			_sql = sqlStr + ", u.id as id from #{Journal.table_name} as j1 inner join #{User.table_name} as u on u.id = j1.user_id where journalized_type  = 'Issue' and journalized_id = #{id} order by j1.id DESC limit 1"
 			result = ActiveRecord::Base.connection.select_one _sql
 			updated_by_name = ""
 			updated_by_id = nil
