@@ -1,4 +1,4 @@
-module LastUpdatedByQueryPatch
+module LastUpdatedByIssueQueryPatch
 	def self.included(base) # :nodoc:
 		base.extend(ClassMethods)
 
@@ -14,14 +14,14 @@ module LastUpdatedByQueryPatch
 	end
 
 	module ClassMethods
-		unless Query.respond_to?(:available_columns=)
+		unless IssueQuery.respond_to?(:available_columns=)
 			# Setter for +available_columns+ that isn't provided by the core.
 			def available_columns=(v)
 				self.available_columns = (v)
 			end
 		end
 
-		unless Query.respond_to?(:add_available_column)
+		unless IssueQuery.respond_to?(:add_available_column)
 			# Method to add a column to the +available_columns+ that isn't provided by the core.
 			def add_available_column(column)
 				self.available_columns << (column)
