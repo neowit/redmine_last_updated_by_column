@@ -5,19 +5,19 @@ update but does not display the name of who made that update.
 LastUpdatedBy plugin fixes that and adds "Updated By" column which shows user name in 
 `<First Name> <Last Name>` form and can be displayed on:
 
-- Issues list (as extra column)
+- Issues list (as extra column "Updated By")
 - My page (as a separate component)
 
 New "Updated By" column is not a real Database column, its value is generated on
-the fly when Redmine renders Issues list. The column is sortable but not
-groupable of filterable.
+the fly when Redmine renders Issues list.  
 
 Note: on /issues page (for Issues without updates) "Updated By" is blank by
-design.
+design. Unlike "Updated By" on "My Page" the "Updated By" column on /issues
+page does not support colour coding.
 
 ## "My Page" Screenshots
 
-"Updated By" Colour Legend:  
+"Updated By" Colour Legend (default colours):  
 - Red - updated by author  
 - Brown - updated by a 3rd person (neither author nor assignee)
 - Black - updated by assignee
@@ -26,6 +26,10 @@ design.
 !["Tickets assigned to me"](https://github.com/neowit/redmine_last_updated_by_column/raw/master/Screenshots/My-Page-original.png)
 
 ![My Tickets with "Updated By"](https://github.com/neowit/redmine_last_updated_by_column/raw/master/Screenshots/My-Page-custom.png)
+
+## "Issues" page screenshot
+
+!["Available Columns with 'Updated By'"](https://github.com/neowit/redmine_last_updated_by_column/raw/master/Screenshots/Available_Columns-Updated_By.png)
 
 ## Redmine version
 
