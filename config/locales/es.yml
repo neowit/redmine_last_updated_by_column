@@ -1,0 +1,6 @@
+es:
+  label_last_updated_by: Actualizado por
+  label_assigned_to_me_issues_with_lastupdatedby: Mis peticiones (con "Actualizado por")
+  # this will appear in the available component drop down on My Page
+  # the key is .html.erb file name without leading underscore
+  issues_with_last_updated_by: Peticiones que me están asignadas con "Actualizado por"
