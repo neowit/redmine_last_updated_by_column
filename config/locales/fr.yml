@@ -1,0 +1,6 @@
+fr:
+  label_last_updated_by: Mis-à-jour Par
+  label_assigned_to_me_issues_with_lastupdatedby: Mes demandes (avec "Mis-à-jour Par")
+  # this will appear in the available component drop down on My Page
+  # the key is .html.erb file name without leading underscore
+  issues_with_last_updated_by: Demandes qui me sont assignées avec "Mis-à-jour Par"
